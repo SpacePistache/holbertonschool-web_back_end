@@ -1,0 +1,1 @@
+Hello, this is a readme summarising the fact that I shall be delving into the world of backend programming beginning with Javascript!
