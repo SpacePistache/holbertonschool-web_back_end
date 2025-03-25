@@ -1,2 +1,3 @@
-export default function returnHowManyArguments (...returnHowManyArguments) {
+export default function returnHowManyArguments(...returnHowManyArguments) {
+  return returnHowManyArguments;
 }
