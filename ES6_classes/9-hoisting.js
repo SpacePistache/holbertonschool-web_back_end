@@ -1,8 +1,5 @@
 export class HolbertonClass {
   constructor(year, location) {
-    if (typeof year !== 'number' || typeof location !== 'string') {
-      throw new TypeError('Year must be a number and location must be a string');
-	}  
     this._year = year;
     this._location = location;
   }
