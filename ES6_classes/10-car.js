@@ -1,8 +1,8 @@
 class Car {
   constructor(brand, motor, color) {
     this._brand = brand;
-    this.color = color;
-    this.motor = motor;
+    this._color = color;
+    this._motor = motor;
   }
 
   cloneCar() {
