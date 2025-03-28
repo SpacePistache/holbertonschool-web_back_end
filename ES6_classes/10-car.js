@@ -1,5 +1,5 @@
 class Car {
-  constructor(brand, motor, color) {
+  constructor(brand = undefined, motor = undefined, color = undefined) {
     this._brand = brand;
     this._color = color;
     this._motor = motor;
@@ -7,7 +7,7 @@ class Car {
 
   cloneCar() {
     const ClonedCar = Object.getPrototypeOf(this).constructor;
-    return new ClonedCar(this._brand, this._motor, this._color);
+    return new ClonedCar();
   }
 }
 export default Car;
