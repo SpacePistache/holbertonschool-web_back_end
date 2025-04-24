@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 A module for conactenating two strings. Via a super special function!
 """
