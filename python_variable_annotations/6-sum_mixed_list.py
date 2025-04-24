@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Additions list of ints and floats and returns their sum"""
+from typing import Union, List
 
 
-def sum_mixed_list(mxd_list: int, float) -> float:
+def sum_mixed_list(mxd_list: List[Union[int, float]]) -> float:
     """Additions list of floats and ints returns float
 
     Args:
@@ -11,4 +12,4 @@ def sum_mixed_list(mxd_list: int, float) -> float:
     Return:
         float: The sum of ints and floats.
     """
-    return sum_mixed_list(float)
+    return float(sum(mxd_list))
