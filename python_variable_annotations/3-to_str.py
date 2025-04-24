@@ -4,6 +4,6 @@ Module transforms float into string format.
 """
 
 
-def to_str(n):
+def to_str(n: float,) -> str:
     """Return n as string."""
     return str(n)
