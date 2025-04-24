@@ -4,6 +4,8 @@ A module employing the floor function rounding down to an int
 """
 import math
 
+floor = __import__('2-floor').floor
+
 
 def get_floored(a: float) -> int:
     """
