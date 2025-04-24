@@ -16,4 +16,4 @@ def get_floored(a: float) -> int:
         Returns: (int) the number that has been rounded down.
 
     """
-    return math.floor(a)
+    return int(a)
