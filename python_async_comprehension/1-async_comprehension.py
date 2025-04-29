@@ -10,6 +10,7 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def async_comprehension() -> AsyncGenerator[float, None]:
+    """Loops x1 and returns x10 rand int"""
     for _ in range(10):
         yield random.randint(0, 10)
         asyncio.sleep(1)
