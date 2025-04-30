@@ -34,4 +34,6 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert page > 0 and page_size > 0
-        return [page, page_size]
+        start_index, end_index = index_range(page, page_size)
+        dataset = self.dataset
+        return dataset[start_index, end_index]
