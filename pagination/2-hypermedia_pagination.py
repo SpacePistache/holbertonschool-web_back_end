@@ -3,7 +3,7 @@
 
 import csv
 import math
-from typing import List
+from typing import Dict, List
 
 
 def index_range(page=1, page_size=15):
@@ -38,7 +38,7 @@ class Server:
         start_index, end_index = index_range(page, page_size)
         return self.dataset()[start_index:end_index]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
         total_pages = math.ceil(total_items/page_size)
