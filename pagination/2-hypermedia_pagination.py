@@ -40,7 +40,7 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         data = self.get_page(page, page_size)
-        total_items = len(self.datset())
+        total_items = len(self.dataset())
         total_pages = math.ceil(total_items/page_size)
         return {"page_size": len(data),
                 "page": page,
