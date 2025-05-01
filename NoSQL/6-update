@@ -1,5 +1,5 @@
 // A script updating an address in the database
-db.school.updateMany(
+db.school.updateOne(
 	{ name: "Holberton school" },
 	{ $set: { address: "972 Mission street" } }
 );
