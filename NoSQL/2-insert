@@ -1,0 +1,2 @@
+// Inserts file into database
+db.school.insertOne({ name: "Holberton school" });
