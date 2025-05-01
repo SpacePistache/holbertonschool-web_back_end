@@ -1,0 +1,2 @@
+// A script listing all docs in school db
+db.school.find().forEach(printjson);
