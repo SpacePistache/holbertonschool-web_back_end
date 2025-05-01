@@ -1,4 +1,4 @@
-// First time mongo-ing..
+// First time mongo-ing.. Lists all the databases
 db.adminCommand('listDatabases').databases.forEach(function(d) {
     print(d.name);
 });
