@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-
 """Module to hash passwords securely using bcrypt"""
+
 import bcrypt
 
 
