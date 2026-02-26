@@ -4,7 +4,7 @@
 import bcrypt
 
 
-def hash_password(password: str) -> bool:
+def hash_password(password: str) -> bytes:
     """
     Hash a password using bcrypt.
 
@@ -19,7 +19,7 @@ def hash_password(password: str) -> bool:
     return hashed
 
 
-def is_valid(hashed_password: bytes, password: str) -> bytes:
+def is_valid(hashed_password: bytes, password: str) -> bool:
     """
     Comparing hashed password against password
 
@@ -29,5 +29,4 @@ def is_valid(hashed_password: bytes, password: str) -> bytes:
     Return:
         Boolean value, true if the password matches, false otherwise.
     """
-
     return bcrypt.checkpw(password.encode('utf-8'), hashed_password)
