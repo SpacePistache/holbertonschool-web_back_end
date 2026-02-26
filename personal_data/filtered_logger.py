@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """A module that uses regex to filter out unnecessary data"""
 import re
+import logging
 from typing import List
 
 
@@ -9,8 +10,6 @@ def filter_datum(fields: List[str], redaction: str,
     """ Function to select and return key information"""
     filtered_data = rf"({'|'.join(fields)})=[^{separator}]*"
     return re.sub(filtered_data, rf"\1={redaction}", message)
-
-import logging
 
 
 class RedactingFormatter(logging.Formatter):
@@ -27,4 +26,5 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         message = super().format(record)
-        return filter_datum(self.fields, self.REDACTION, message, self.SEPARATOR)
+        return filter_datum(self.fields, self.REDACTION,
+                            message, self.SEPARATOR)
