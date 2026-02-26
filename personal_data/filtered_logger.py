@@ -3,7 +3,7 @@
 import re
 from typing import List
 
-def filter_datum(fields: List[str], redaction: str, message: str, seperator: str) -> str:
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
 	""" Function to select and return key information"""
-	filtered_data = rf"({'|'.join(fields)})=[^{seperator}]*"
+	filtered_data = rf"({'|'.join(fields)})=[^{separator}]*"
 	return re.sub(filtered_data, rf"\1={redaction}", message)
