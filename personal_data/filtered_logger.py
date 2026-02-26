@@ -33,15 +33,16 @@ class RedactingFormatter(logging.Formatter):
         message = super().format(record)
         return filter_datum(self.fields, self.REDACTION,
                             message, self.SEPARATOR)
-    
+
+
 def get_logger() -> logging.Logger:
-       """Creates a logger"""
-       logger = logging.getLogger("user_data")
-       logger.setLevel(logging.INFO)
-       logger.propagate = False
-       
-       handler = logging.StreamHandler()
-       handler.setFormatter(RedactingFormatter(list(PII_FIELDS)))
-       logger.addHandler(handler)
-       
-       return logger
+    """Creates a logger"""
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(list(PII_FIELDS)))
+    logger.addHandler(handler)
+
+    return logger
