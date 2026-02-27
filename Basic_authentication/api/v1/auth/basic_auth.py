@@ -17,7 +17,7 @@ class BasicAuth(Auth):
         if not isinstance(self.authorization_header, str):
             return None
 
-        if not self.authorization_header.startswith("Basic "):
+        if not authorization_header.startswith("Basic "):
             return None
 
         return authorization_header.split("Basic ")[6:]
