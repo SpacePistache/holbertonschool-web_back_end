@@ -14,7 +14,7 @@ class Auth():
         pass
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """False for now"""
+        """Checks path"""
 
         if path is None:
             return True
@@ -33,6 +33,13 @@ class Auth():
 
     def authorization_header(self, request=None) -> str:
         """None for now"""
+
+        if request is None:
+            return None
+        
+        return request.headers.get('Authorization')
+        
+
         return None
 
     def current_user(self, request=None) -> User:
