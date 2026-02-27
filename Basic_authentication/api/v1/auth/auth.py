@@ -38,9 +38,7 @@ class Auth():
             return None
         
         return request.headers.get('Authorization')
-        
 
-        return None
 
     def current_user(self, request=None) -> User:
         """None for now"""
