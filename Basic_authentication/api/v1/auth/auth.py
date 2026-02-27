@@ -15,7 +15,19 @@ class Auth():
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """False for now"""
-        return False
+
+        if path is None:
+            return True
+
+        if excluded_paths is None or excluded_paths == []:
+            return True
+
+        if not path.endswith('/'):
+            path += '/'
+
+        for excluded_path in excluded_paths:
+            if path == excluded_path:
+                return False
 
     def authorization_header(self, request=None) -> str:
         """None for now"""
