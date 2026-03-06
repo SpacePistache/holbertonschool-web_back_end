@@ -9,6 +9,7 @@ class MRUCache(BaseCaching):
     """MRUCache class"""
 
     def __init__(self):
+        """Initialize"""
         super().__init__()
         self.usage = []
 
@@ -20,7 +21,8 @@ class MRUCache(BaseCaching):
         if key in self.cache_data:
             self.usage.remove(key)
 
-        if key not in self.cache_data and len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+        if (key not in self.cache_data and
+                len(self.cache_data) >= BaseCaching.MAX_ITEMS):
             mru_key = self.usage.pop()
             del self.cache_data[mru_key]
             print("DISCARD:", mru_key)
