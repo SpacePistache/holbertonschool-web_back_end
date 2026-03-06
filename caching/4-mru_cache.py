@@ -6,35 +6,30 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class MRUCache(BaseCaching):
-    """
-    MRUCache class that inherits from BaseCaching
-    and implements the MRU caching
-    """
+    """MRUCache class"""
 
     def __init__(self):
-        """Initialize"""
         super().__init__()
         self.usage = []
 
     def put(self, key, item):
-        """Add an item in the cache using MRU policy"""
+        """Add item using MRU policy"""
         if key is None or item is None:
             return
 
         if key in self.cache_data:
             self.usage.remove(key)
 
-        self.cache_data[key] = item
-        self.usage.append(key)
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            mru_key = self.usage[-1]
-            self.usage.remove(mru_key)
+        if key not in self.cache_data and len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            mru_key = self.usage.pop()
             del self.cache_data[mru_key]
             print("DISCARD:", mru_key)
 
+        self.cache_data[key] = item
+        self.usage.append(key)
+
     def get(self, key):
-        """Get an item by key"""
+        """Retrieve item"""
         if key is None or key not in self.cache_data:
             return None
 
