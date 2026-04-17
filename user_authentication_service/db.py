@@ -41,5 +41,12 @@ class DB:
 
     def find_user_by(self, **kwargs):
         """Find a user by attributes"""
+        from sqlalchemy.exc import InvalidRequestError
+        from sqlalchemy.orm.exc import NoResultFound
 
-        return self._session.query(User).filter_by(**kwargs).one()
+        try:
+            return self._session.query(User).filter_by(**kwargs).one()
+        except NoResultFound:
+            raise NoResultFound
+        except InvalidRequestError:
+            raise InvalidRequestError
