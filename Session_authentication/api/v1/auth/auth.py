@@ -42,3 +42,8 @@ class Auth():
     def current_user(self, request=None) -> User:
         """None for now"""
         return None
+
+
+class SessionAuth(Auth):
+    """Inherits from Auth"""
+    pass
