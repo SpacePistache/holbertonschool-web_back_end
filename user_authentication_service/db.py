@@ -43,5 +43,3 @@ class DB:
         """Find a user by attributes"""
 
         return self._session.query(User).filter_by(**kwargs).one()
-
-        return user
