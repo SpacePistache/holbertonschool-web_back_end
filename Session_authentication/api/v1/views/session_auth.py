@@ -7,20 +7,19 @@ from os import getenv
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
-def login():
-    """login route for session auth"""
+def session_login():
+    """POST /api/v1/auth_session/login"""
 
     email = request.form.get('email')
-    password = request.form.get('password')
-
     if email is None or email == "":
         return jsonify({"error": "email missing"}), 400
 
+    password = request.form.get('password')
     if password is None or password == "":
         return jsonify({"error": "password missing"}), 400
 
-    users = User.search({'email': email})
-    if not users:
+    users = User.search({"email": email})
+    if not users or len(users) == 0:
         return jsonify({"error": "no user found for this email"}), 404
 
     user = users[0]
