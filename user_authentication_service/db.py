@@ -44,9 +44,9 @@ class DB:
         from sqlalchemy.exc import InvalidRequestError
         from sqlalchemy.orm.exc import NoResultFound
 
-        try:
-            return self._session.query(User).filter_by(**kwargs).one()
-        except NoResultFound:
-            raise NoResultFound
-        except InvalidRequestError:
-            raise InvalidRequestError
+        valid_columns = User.__table__.columns.keys()
+        for key in kwargs:
+            if key not in valid_columns:
+                raise InvalidRequestError
+
+        return self._session.query(User).filter_by(**kwargs).one()
