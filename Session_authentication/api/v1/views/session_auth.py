@@ -21,7 +21,7 @@ def login():
 
     users = User.search({'email': email})
     if not users:
-        return jsonify({"error": "no user found for this email."}), 404
+        return jsonify({"error": "no user found for this email"}), 404
 
     user = users[0]
 
