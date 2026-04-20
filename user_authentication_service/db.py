@@ -39,12 +39,11 @@ class DB:
         self._session.refresh(user)
         return user
 
-    def find_user_by(self, **kwargs):
+    def find_user_by(self, **kwargs) -> User:
         """Find a user by attributes"""
-
-        valid_columns = User.__table__.columns.keys()
-        for key in kwargs:
-            if key not in valid_columns:
-                raise InvalidRequestError
-
-        return self._session.query(User).filter_by(**kwargs).one()
+        try:
+            return self._session.query(User).filter_by(**kwargs).one()
+        except NoResultFound:
+            raise NoResultFound
+        except InvalidRequestError:
+            raise InvalidRequestError
