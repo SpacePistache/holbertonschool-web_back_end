@@ -35,7 +35,8 @@ class Auth:
                                   user.hashed_password)
         except NoResultFound:
             return False
-        
+
+
 def _generate_uuid() -> str:
     """Generate uuid and return its string represenatation"""
     return str(uuid.uuid4())
