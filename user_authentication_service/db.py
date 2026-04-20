@@ -4,6 +4,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
 
 from user import Base, User
 
@@ -39,8 +41,6 @@ class DB:
 
     def find_user_by(self, **kwargs):
         """Find a user by attributes"""
-        from sqlalchemy.exc import InvalidRequestError
-        from sqlalchemy.orm.exc import NoResultFound
 
         valid_columns = User.__table__.columns.keys()
         for key in kwargs:
