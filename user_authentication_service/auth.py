@@ -25,7 +25,7 @@ class Auth:
             raise ValueError(f"User {email} already exists")
         except NoResultFound:
             hashed = _hash_password(password)
-        return self._db.add_user(email, hashed)
+            return self._db.add_user(email, hashed)
 
     def valid_login(self, email: str, password: str) -> bool:
         """validate login credentials"""
