@@ -39,9 +39,9 @@ class Auth:
     def create_session(self, email: str) -> str:
         """create session user session ID"""
         try:
-            user = self.db.find_user_by(email=email)
+            user = self._db.find_user_by(email=email)
             session_id = _generate_uuid()
-            self.db.update_user(user.id, session_id=session_id)
+            self._db.update_user(user.id, session_id=session_id)
             return session_id
         except NoResultFound:
             return None
