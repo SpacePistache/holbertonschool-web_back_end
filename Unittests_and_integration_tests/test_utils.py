@@ -44,3 +44,4 @@ class TestGetJson(unittest.TestCase):
         result = get_json("http://example.com")
 
         self.assertEqual(result, {"key": "value"})
+        mock_get.assert_called_once_with("http://example.com")
