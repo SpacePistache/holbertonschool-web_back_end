@@ -34,14 +34,18 @@ class TestAccessNestedMap(unittest.TestCase):
 class TestGetJson(unittest.TestCase):
     """Use Mocking to test HTTP calls"""
 
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
+    ])
     @patch("utils.requests.get")
-    def test_get_json(self, mock_get):
+    def test_get_json(self, url, payload, mock_get):
 
         mock_http_call = Mock()
-        mock_http_call.json.return_value = {"key": "value"}
+        mock_http_call.json.return_value = payload
         mock_get.return_value = mock_http_call
 
-        result = get_json("http://example.com")
+        result = get_json(url)
 
-        self.assertEqual(result, {"key": "value"})
-        mock_get.assert_called_once_with("http://example.com")
+        self.assertEqual(result, payload)
+        mock_get.assert_called_once_with(url)
