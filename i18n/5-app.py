@@ -43,6 +43,7 @@ def before_request():
     """Set user in global request context"""
     g.user = get_user()
 
+
 def get_locale():
     """Determine best locale"""
 
