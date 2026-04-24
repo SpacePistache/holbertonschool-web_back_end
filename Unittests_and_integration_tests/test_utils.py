@@ -41,6 +41,7 @@ class TestGetJson(unittest.TestCase):
     ])
     @patch("utils.requests.get")
     def test_get_json(self, url, payload, mock_get):
+        """testing json"""
 
         mock_http_call = Mock()
         mock_http_call.json.return_value = payload
@@ -60,10 +61,12 @@ class TestMemoize(unittest.TestCase):
 
         class TestClass:
             def a_method(self):
+                """test class"""
                 return 42
 
             @memoize
             def a_property(self):
+                """method function"""
                 return self.a_method()
 
         with patch.object(TestClass, "a_method",
