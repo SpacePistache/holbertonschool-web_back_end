@@ -10,6 +10,7 @@ from utils import memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
+    """Class test for nested maps"""
 
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
