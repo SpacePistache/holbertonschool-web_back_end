@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Basic flask app"""
+"""Basic flask app with babel config"""
 
 from flask import Flask, render_template
 from flask_babel import Babel
@@ -13,7 +13,7 @@ class Config:
 
 app = Flask(__name__)
 app.config.from_object(Config)
-Babel = Babel(app)
+Babel = __import__ ('1-app').babel
 
 
 @app.route('/')
