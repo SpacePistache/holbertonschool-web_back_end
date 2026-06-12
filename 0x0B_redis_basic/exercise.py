@@ -13,6 +13,7 @@ class Cache:
         self._redis = flushdb()
 
     def store(self, data: str | bytes | int | float) -> str:
+        """stores the storage"""
         key = str(uuid(4))
 
         self._redis.set(key, data)
