@@ -7,13 +7,15 @@ import uuid
 
 
 class Cache:
+    """"""
 
     def __init__(self):
+        """stores instance of private variable then flushes it."""
         self._redis = redis.Redis()
         self._redis = flushdb()
 
     def store(self, data: str | bytes | int | float) -> str:
-        """stores the storage"""
+        """generates a random key and stores input data"""
         key = str(uuid(4))
 
         self._redis.set(key, data)
