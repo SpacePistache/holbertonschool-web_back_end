@@ -11,7 +11,8 @@ class Cache:
 
     def __init__(self):
         """stores instance of private variable then flushes it."""
-        self._redis = redis.Redis()
+        #self._redis = redis.Redis()
+        self._redis: redis.Redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: str | bytes | int | float) -> str:
