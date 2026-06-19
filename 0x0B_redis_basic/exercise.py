@@ -4,7 +4,7 @@
 
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable
 
 
 class Cache:
@@ -12,7 +12,6 @@ class Cache:
 
     def __init__(self):
         """stores instance of private variable then flushes it."""
-        #self._redis = redis.Redis()
         self._redis: redis.Redis = redis.Redis()
         self._redis.flushdb()
 
@@ -23,3 +22,23 @@ class Cache:
         self._redis.set(key, data)
 
         return key
+
+    def get(self, key: str, fn: Callable = None):
+        """Retrieve data from Redis"""
+        value = self._redis.get(key)
+
+        if value is None:
+            return None
+
+        if fn is None:
+            return value
+
+        return fn(value)
+
+    def get_str(self, key: str) -> int:
+        """retrieve string value"""
+        return self.get(key, lambda d: d.decode("utf-8"))
+
+    def get_int(self, key: str) -> int:
+        """retrieve int value"""
+        return self.get(key, int)
