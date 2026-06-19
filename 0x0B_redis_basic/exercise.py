@@ -8,7 +8,7 @@ from typing import Union
 
 
 class Cache:
-    """"""
+    """Cache class for storing data in Redis"""
 
     def __init__(self):
         """stores instance of private variable then flushes it."""
@@ -16,7 +16,7 @@ class Cache:
         self._redis: redis.Redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: Union [str, bytes, int, float]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """generates a random key and stores input data"""
         key = str(uuid.uuid4())
 
