@@ -1,4 +1,4 @@
---List groups categorized as glam rock and their longevity
+-- List groups categorized as glam rock and their longevity
 
 SELECT band_name,
        CASE
@@ -6,5 +6,5 @@ SELECT band_name,
            ELSE split - formed
        END AS lifespan
 FROM metal_bands
-WHERE style = 'Glam rock'
+WHERE style = 'Glam'
 ORDER BY lifespan DESC;
